@@ -27,4 +27,29 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+
+    public function destroy($id) {
+        $legume = Legume::find($id);
+        $legume->delete();
+
+        return redirect()->back();
+    }
+
+    public function show($id) {
+        $show = Legume::find($id);
+        return view('pages.show', compact('show'));
+    }
+
+    public function edit($lid) {
+        $user = Legume::find($lid);
+        return view('pages.edit', compact('user'));
+    }
+    public function update($id, Request $request) {
+        $user = Legume::find($id);
+        $user->name = $request->nomLegume;
+        $user->quantity = $request->quantiteLegume;
+        $user->save();
+        return redirect()->back();
+    }
+
 }

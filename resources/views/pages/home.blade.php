@@ -2,18 +2,35 @@
 
 @section('content')
 
-    <h1>test</h1>
+<h3>Légumes</h3>
 
-    @foreach ($legume as $item)
+<table class="table">
 
-        <p>{{($item->name)}}</p>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
 
-    @endforeach
-
-    @foreach ($fruit as $item)
-
-        <p>{{($item->name)}}</p>
-
-    @endforeach
+  <tbody>
+        @foreach ($legume as $item)
+    <tr>
+      <th scope="row">{{($item->id)}}</th>
+      <td><a href="/show/legume/{{($item->id)}}">{{($item->name)}}</a></td>
+      <td>{{($item->quantity)}}</td>
+      <td>
+          <form action="/destroy/legume/{{($item->id)}}" method="post">
+          @csrf
+            <button type="submit">Delete</button>
+          </form>
+      </td>
+    </tr>
+        @endforeach
+    
+  </tbody>
+</table>
 
 @endsection

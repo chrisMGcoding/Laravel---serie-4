@@ -19,3 +19,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/create/legume', [HomeController::class, 'create'])->name('legume');
 
 Route::post('/store/legume', [HomeController::class, 'store'])->name('créerLegume');
+
+Route::post('/destroy/legume/{id}', [HomeController::class, 'destroy'])->name('delete');
+
+Route::get('/show/legume/{id}', [HomeController::class, 'show'])->name('show');
+
+Route::get('/edit/legume/{id}', [HomeController::class, 'edit'])->name('edit');
+
+Route::post('/update/legume/{id}', [HomeController::class, 'update'])->name('update');
